@@ -1,0 +1,234 @@
+---
+title: "Replication Study: Predicting Online Purchase Intention with Machine Learning"
+author: "Syed Mohd Anas"
+format:
+  revealjs:
+    theme: simple
+    slide-number: true
+    transition: fade
+date: "17 December 2025"
+---
+
+## Topic
+
+**Replication Study: Predicting Online Purchase Intention with Machine Learning**
+
+Syed Mohd Anas  
+Data Science for Business  
+17-12-2025
+
+::: notes
+Good morning/afternoon. Today I’ll briefly present my replication study on predicting online purchase intention using machine learning. This work is part of the Data Science for Business module and focuses on understanding and reconstructing an existing study rather than developing a new model.
+:::
+
+
+---
+
+## Motivation
+
+**Why does this matter?**
+
+- E-commerce: many visitors, few purchases  
+- Predicting purchase intention helps:
+  - targeted marketing  
+  - personalization  
+  - better use of budget and resources  
+- Main challenge: rare purchases which leads to **class imbalance**
+
+::: notes
+In e-commerce, most visitors browse but only a small fraction actually make a purchase. Being able to predict purchase intention is valuable for businesses because it supports targeted marketing, personalization, and more efficient use of budgets. However, a key challenge is that purchases are rare, which leads to strong class imbalance in the data.
+:::
+
+
+---
+
+## Reference Paper (What I Replicate)
+
+**Lin (2025, PLOS ONE)**
+
+- Uses Online Shoppers Purchasing Intention dataset  
+- Compares models:
+  - SVM  
+  - XGBoost  
+  - CatBoost  
+  - BPANN  
+- Evaluation focuses on:
+  - Recall  
+  - ROC AUC  
+- Goal: machine learning for precision marketing
+
+::: notes
+The reference paper I replicate is by Lin, published in PLOS ONE in 2025. It uses the Online Shoppers Purchasing Intention dataset and compares several machine-learning models, including SVM, XGBoost, CatBoost, and BPANN. The main focus of the paper is to show how machine learning can support precision marketing.
+:::
+
+
+---
+
+## Objective of My Replication
+
+**What I am doing**
+
+- Replicate a representative workflow from the paper  
+- Use the same dataset  
+- Focus on one model first for clarity and reproducibility  
+- Compare observed outcomes with the paper’s benchmarks  
+
+::: notes
+The objective of my project is to replicate a representative machine-learning workflow from this paper. I use the same dataset but focus on one model first, namely SVM, to keep the analysis clear and reproducible. The goal is then to compare observed performance patterns with the benchmarks reported in the original study.
+:::
+
+
+---
+
+## Dataset
+
+**Online Shoppers Purchasing Intention (UCI, 2016)**
+
+- 12,330 online shopping sessions  
+- Behavioral features:
+  - page visits  
+  - visit durations  
+  - bounce and exit rates  
+- Target variable:
+  - **Revenue** (purchase or not)
+
+::: notes
+The dataset used is the Online Shoppers Purchasing Intention dataset from UCI. It contains 12,330 online shopping sessions, where each row represents one user session. The features describe user behavior such as page visits and durations, and the target variable indicates whether a purchase was made or not.
+:::
+
+
+---
+
+## Key Challenge: Class Imbalance
+
+**Why evaluation is tricky**
+
+- Majority of sessions are non-purchase  
+- High accuracy can be misleading  
+
+Therefore, focus on:
+- **Recall** (detecting purchases)  
+- **ROC AUC** (ranking ability)  
+
+::: notes
+An important challenge in this dataset is class imbalance. Most sessions do not result in a purchase. Because of this, a model can achieve high accuracy simply by predicting ‘no purchase’ most of the time. Therefore, evaluation needs to focus on metrics like recall and ROC AUC, which are more informative in this context.
+:::
+
+
+---
+
+## Planned Workflow
+
+**Step-by-step approach**
+
+1. Load and inspect the data  
+2. Convert categorical variables  
+3. Split data into training and test sets  
+4. Train SVM 
+5. Evaluate using:
+   - confusion matrix  
+   - recall  
+   - ROC curve and AUC  
+6. Compare results with the reference paper  
+
+::: notes
+The workflow starts with loading and inspecting the data, followed by handling categorical variables and splitting the data into training and test sets. I then train a Support Vector Machine with a radial kernel and evaluate it using a confusion matrix, recall, and ROC AUC. Finally, the results are compared with the reference paper.
+:::
+
+
+---
+
+## Model Choice (SVM)
+
+**Why SVM first?**
+
+- Standard classification baseline
+- Suitable for structured feature data  
+- Included in the original study  
+
+::: notes
+SVM is chosen as the first model because it is a well-established classification method, capable of handling non-linear decision boundaries. It works well with structured feature data and is also one of the models used in the original study, making it suitable for replication.
+:::
+
+
+---
+
+## Current Status
+
+**Progress update**
+
+- Data cleaning and setup completed 
+
+**Next steps**
+- SVM pipeline implementation
+- Evaluation metrics preparation
+- comparison with the paper  
+- optional tuning or threshold adjustment  
+
+::: notes
+At this stage, data preprocessing and the SVM pipeline have been implemented, and evaluation metrics are prepared. This presentation focuses on the methodological setup and progress. The next step is a systematic comparison of observed performance with the benchmarks reported in the original paper.
+:::
+
+
+---
+
+## Why Results May Differ from the Paper
+
+**Expected replication gaps**
+
+- Original study applies:
+  - SMOTE 
+  - feature selection  
+  - hyperparameter tuning  
+- Simpler baseline approach:
+  - lower recall expected  
+  - ROC AUC can still remain strong  
+
+::: notes
+Differences between my results and the original paper are expected. The paper applies additional steps such as SMOTE for class balancing, feature selection, and extensive hyperparameter tuning. A simpler baseline implementation typically leads to lower recall, although ROC AUC can still remain strong.
+:::
+
+
+---
+
+## Limitations
+
+- Original source code not publicly available  
+- Workflow reconstructed from paper description  
+- Strong class imbalance affects buyer detection  
+- Focus on a single model at this stage  
+
+::: notes
+There are a few limitations. The original source code is not publicly available, so the workflow has to be reconstructed based on the paper’s description. In addition, class imbalance makes buyer detection difficult, and the analysis currently focuses on a single model.
+:::
+
+
+---
+
+## Conclusion & Next Steps
+
+**Key takeaways**
+
+- Replication helps test robustness and transparency  
+- Class imbalance strongly affects evaluation  
+- Recall and ROC AUC are crucial metrics  
+
+**Next steps**
+- Improve SVM via: threshold adjustment  
+- Extend to additional models if time permits  
+
+::: notes
+To conclude, replication is useful for evaluating the robustness and transparency of published results. In imbalanced datasets like this one, recall and ROC AUC are more informative than accuracy. Next steps include improving the SVM through threshold adjustment or class weighting and potentially extending the analysis to additional models.
+:::
+
+
+---
+
+## Q&A
+
+**Thank you**
+
+::: notes
+Thank you for listening. I’m happy to answer any questions.
+:::
+
